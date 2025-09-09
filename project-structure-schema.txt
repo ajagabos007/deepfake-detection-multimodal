@@ -1,0 +1,71 @@
+project_root/
+├── data/
+│   ├── raw_videos/
+│   ├── processed_frames/
+│   ├── extracted_audio/
+│   ├── transcripts/
+│   └── features/
+│       ├── visual.npy
+│       ├── audio.npy
+│       └── context.npy
+├── models/
+│   ├── visual_model.pth
+│   ├── audio_model.pth
+│   ├── context_model.pth
+│   └── fusion_model.pth
+├── notebooks/
+│   ├── EDA.ipynb
+│   └── ModelTraining.ipynb
+├── src/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── preprocess/
+│   │   ├── __init__.py
+│   │   ├── video.py          # Extract frames, detect faces
+│   │   ├── audio.py          # Extract & preprocess audio
+│   │   └── context.py        # Subtitle parsing, transcript
+│   ├── features/
+│   │   ├── extract_visual.py
+│   │   ├── extract_audio.py
+│   │   └── extract_context.py
+│   ├── models/
+│   │   ├── visual_net.py
+│   │   ├── audio_net.py
+│   │   ├── context_net.py
+│   │   └── fusion_net.py
+│   ├── train/
+│   │   ├── train_visual.py
+│   │   ├── train_audio.py
+│   │   ├── train_context.py
+│   │   └── train_fusion.py
+│   └── predict.py            # Run full pipeline & predict
+├── app/
+│   ├── main.py               # Streamlit or Flask interface
+│   └── templates/
+├── requirements.txt
+└── README.md
+
+
+
+
+# --- README.md (brief) ---
+# Deepfake Detection - Multimodal
+
+This repo contains starting code for preprocessing video, audio, and context (transcripts).
+
+Start by installing requirements in a virtualenv and ensure `ffmpeg` is installed system-wide.
+
+Example:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python src/predict.py path/to/video.mp4
+```
+
+
+# Next steps
+- Implement `src/features/*` to convert crops / mfcc / transcript into feature vectors
+- Implement `src/models/*` with training & inference
+- Implement fusion model and evaluation scripts
