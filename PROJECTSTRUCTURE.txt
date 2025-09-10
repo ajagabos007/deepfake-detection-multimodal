@@ -63,9 +63,3 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python src/predict.py path/to/video.mp4
 ```
-
-
-# Next steps
-- Implement `src/features/*` to convert crops / mfcc / transcript into feature vectors
-- Implement `src/models/*` with training & inference
-- Implement fusion model and evaluation scripts
